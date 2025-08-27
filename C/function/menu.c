@@ -14,7 +14,7 @@
 int summary(int a, int b)
 {
     int total;
-    total = a + b;
+    total = a + b; // 3 + 5 = 8
     return total;
 }
 int main()
@@ -33,7 +33,7 @@ int main()
         case 1:
             printf("You chose option 1 Summary 2 numbers \n");
             // Gọi hàm tính tổng hai số
-            result = summary(a,b);
+            result = summary(a,b); // result =8;
             printf("Summary: %d\n", result);
             break;
         case 2: 
