@@ -38,12 +38,26 @@ void inputAdv()
         printf("Gia tri cua array[%d] la %d \n", i, array[i]);
     }
 }
+void charArray(){
+    printf("Nhap vao mang ky tu \n");
+    char name [10];
+    for (int i = 0; i < 10; i++)
+    {
+        scanf(" %c",&name[i]);
+    }
+    for (int i = 0; i < 10; i++)
+    {
+       printf("%c",name[i]);
+    }
+    
+    
+}
 int main()
 {
 
     while (1)
     {
-        printf("1.Goi ham showArray \n2.Goi ham inputArray\n3.Goi ham inputAdv\n");
+        printf("\n1.Goi ham showArray \n2.Goi ham inputArray\n3.Goi ham inputAdv\n4.Goi charArray\n");
         int choice;
         printf("Nhap vao lua chon cua ban.\n");
         scanf("%d", &choice);
@@ -58,6 +72,9 @@ int main()
             break;
         case 3:
             inputAdv();
+            break;
+        case 4:
+            charArray();
             break;
         default:
             showArray();
