@@ -3,3 +3,81 @@ composer create-project laravel/laravel t2508m_demo
 Tạo controller
 
 php artisan make:controller Api/ProductController --api --model=Models/Product
+
+Bước 1: Tạo controller và model bằng lệnh: php artisan make:controller Api/ProductController --api --model=Models/Product
+Bước 2: Khai báo cho Models/Product
+<?php
+
+namespace App\Models\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+      // Bảng trong DB
+    protected $table = 'Products';
+
+    // Khoá chính
+    protected $primaryKey = 'product_code';
+
+    // Nếu dùng IDENTITY, Laravel mặc định là incrementing = true, type int
+    public $incrementing = true;
+    protected $keyType = 'int';
+
+    // Nếu bảng KHÔNG có created_at, updated_at
+    public $timestamps = false;
+
+    // Các cột được phép fill
+    protected $fillable = [
+        'product_name',
+        'price',
+        'description',
+    ];
+}
+   
+Bước 3: Thêm code vào trong ProductController
+
+   public function index()
+    {
+        $products = Product::all();
+        return response()->json($products);
+    }
+
+Bước 4: Thêm routes/api.php
+
+
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ProductController;
+
+// Test đơn giản xem file api.php có được load không
+Route::get('/ping', function () {
+    return response()->json(['message' => 'api ok']);
+});
+
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
+Route::post('/products', [ProductController::class, 'store']);
+Route::put('/products/{id}', [ProductController::class, 'update']);
+Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+
+
+Bước 5: bổ sung thêm route ở app.php tại boostrap/app.php thêm 
+        api: __DIR__.'/../routes/api.php',
+
+Bước 6: Cấu hình kết nối db tại file .env
+
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=phplaravel_demo
+DB_USERNAME=root
+DB_PASSWORD=
+
+Bước 7: Chạy thử
+php artisan serve
+
+
+lệnh lấy danh sách api: php artisan route:list
