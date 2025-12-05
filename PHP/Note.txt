@@ -1,0 +1,5 @@
+Tạo dự án:
+composer create-project laravel/laravel t2508m_demo
+Tạo controller
+
+php artisan make:controller Api/ProductController --api --model=Models/Product
