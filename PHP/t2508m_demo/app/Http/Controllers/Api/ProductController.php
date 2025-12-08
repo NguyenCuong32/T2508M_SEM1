@@ -11,11 +11,13 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+
+    public function getAllProduct()
     {
         $products = Product::all();
         return response()->json($products);
     }
+
 
     /**
      * Store a newly created resource in storage.
