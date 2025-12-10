@@ -10,7 +10,7 @@ class Product extends Model
     protected $table = 'Products';
 
     // Khoá chính
-    protected $primaryKey = 'product_code';
+    protected $primaryKey = 'id';
 
     // Nếu dùng IDENTITY, Laravel mặc định là incrementing = true, type int
     public $incrementing = true;
