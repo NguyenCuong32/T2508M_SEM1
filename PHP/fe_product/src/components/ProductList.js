@@ -20,7 +20,7 @@ function ProductList() {
 
   return (
     <div className="product-list-wrapper">
-      <h1 className="product-list-title">Product List</h1>
+      <h1 className="product-list-title">Điện thoại chính hãng</h1>
       <div className="product-list">
         {products.map((p, index) => (
           <Product key={p.id || index} product={p} />
